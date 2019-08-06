@@ -1,4 +1,4 @@
-#Instructions
+A basic UI testing project to show basic usage of Selenium with TestNG as well as to experiment with different ways of performing automated UI testing (webdriver management, reporting, POM abstractions, etc).
 
 ## Quick Start
 
