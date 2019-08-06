@@ -43,9 +43,9 @@ public class LoginTests {
     }
 
     @Test(description="Navigate to URL and verify correct page")
-    public void browserInitTest() {
+    public void browserInitTest() throws InterruptedException {
     	driver.get(BASE_URL);
-    	
+    	Thread.sleep(5000);
         Assert.assertEquals(driver.getTitle(), "Digital Bank");
     }
     
