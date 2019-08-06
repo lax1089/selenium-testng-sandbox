@@ -1,6 +1,7 @@
 package com.digitalbank.tests;
 
 import java.net.MalformedURLException;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -26,12 +27,13 @@ public class LoginTests {
     public static void setupSuite() throws MalformedURLException {
     	// Setting up driver manager
     	WebDriverManager.chromedriver().setup();
-    }
+    	    }
     
     @BeforeTest(alwaysRun=true)
     public void testSetupTest() {
     	// Initializing Chrome driver
     	driver = new ChromeDriver();
+    	driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
     @AfterSuite(alwaysRun=true)
@@ -43,6 +45,7 @@ public class LoginTests {
     @Test(description="Navigate to URL and verify correct page")
     public void browserInitTest() {
     	driver.get(BASE_URL);
+    	
         Assert.assertEquals(driver.getTitle(), "Digital Bank");
     }
     
@@ -54,7 +57,9 @@ public class LoginTests {
         driver.findElement(By.id("username")).sendKeys(VALID_USERNAME);
         driver.findElement(By.id("password")).sendKeys(VALID_PASSWORD);
         
+        Thread.sleep(5000);
         driver.findElement(By.id("submit")).click();
+        
       
         Assert.assertEquals(driver.getCurrentUrl(), BASE_URL+"/home");
     }
